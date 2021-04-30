@@ -1,4 +1,4 @@
-console.group("Variable tasks");  
+console.group('Variable tasks');  
 const a = 5;
 const b = 7.7;
 console.log('a*b :>> ', a*b);
@@ -17,8 +17,8 @@ console.log('string g+h :>> ', g+h);
 
 const numbr = 11;
 const bool = true;
-const str = "java script";
-const str100 = "100";
+const str = 'java script';
+const str100 = '100';
 console.log('number 11 :>> ', numbr);
 console.log('boolean :>> ', bool);
 console.log('string :>> ', str);
@@ -34,33 +34,33 @@ num--;
 
 console.groupEnd(); 
 
-console.group("Prompt tasks");
+console.group('Prompt tasks');
 console.log('Square number :>> ');
-let num2 = Number (prompt("Please, input your number:"));
+let num2 = Number (prompt('Please, input your number:'));
 // num2 = Math.pow (num2, 2);
 num2 = num2 * num2;
 console.log('You are win this number :>> ', num2);
 
 console.log('Average of two :>> ');
-let num1 = Number (prompt("Please, input 1st number:"));
-num2 = Number (prompt("Please, input 2nd number:"));
+let num1 = Number (prompt('Please, input 1st number:'));
+num2 = Number (prompt('Please, input 2nd number:'));
 let  ave = (num1 + num2) / 2;
 console.log('Average :>> ', ave);
 
 console.log('Seconds :>> ');
-let minutes = Number (prompt("Please, input number of minutes:"));
+let minutes = Number (prompt('Please, input number of minutes:'));
 let sec = minutes * 60;
 console.log(minutes + ' minutes equal ' + sec + '  seconds');
 
-const greeting = "Hello";
-let userName = String (prompt("Please, enter your name >>"));
+const greeting = 'Hello';
+let userName = String (prompt('Please, enter your name >>'));
 console.log('Hello, '+ userName + '!');
 
 console.groupEnd();
 
-console.group("if-else tasks");
+console.group('if-else tasks');
 console.log('Enter 10 :>> ');
-const userVar = Number (prompt("Please, enter a number >>"));
+const userVar = Number (prompt('Please, enter a number >>'));
 if (userVar == 10) {
     console.log('TRUE'); 
 } else {
@@ -88,7 +88,7 @@ let userSum = 0;
 let userDiscount = 0;
 for (let i=0; i<3; i++) {
     // let userDiscount = 0;
-    userSum = Number (prompt("Please, enter a invoice sum >>"));
+    userSum = Number (prompt('Please, enter a invoice sum >>'));
     if (userSum > 800) {
         userDiscount = userSum * 0.05;   
     } else if (userSum > 500) {
@@ -101,6 +101,95 @@ for (let i=0; i<3; i++) {
 console.groupEnd();
 
 console.group('Loop Tasks');
+console.log('from 25 to 0 (for) :>> ');
+let strOutput = '';
+for (let i=25; i>=0; i--) {
+    strOutput = strOutput + i + ' ';    
+}
+console.log('Result for:>> ', strOutput);
+
+console.log('from 25 to 0 (while) :>> ');
+i=25;
+strOutput = '';
+while (i >= 0) {
+    strOutput = strOutput + i + ' ';    
+    i--;
+}
+console.log('Result while:>> ', strOutput);
+
+console.log('from 25 to 0 (do-while) :>> ');
+i=25;
+strOutput = '';
+do {
+    strOutput = strOutput + i + ' ';
+    i--;
+} while (i >= 0) 
+console.log('Result do-while:>> ', strOutput);
+
+console.log('From 10 to 50 (div 5) :>> ');
+
+strOutput = '';
+for (let i = 10; i <= 50; i = i + 5) {
+    strOutput = strOutput + i + ' ';    
+}
+console.log('Result from 10 to 50 (div 5) for:>> ', strOutput);
+
+i=10;
+strOutput = '';
+while (i <= 50) {
+    if (i % 5 == 0) {
+        strOutput = strOutput + i + ' ';    
+    }
+    i++;
+}
+console.log('Result from 10 to 50 (div 5) while:>> ', strOutput);
+
+i=10;
+strOutput = '';
+do {
+    strOutput = strOutput + i + ' ';
+    i += 5;
+} while (i <= 50) 
+console.log('Result from 10 to 50 (div 5) do-while:>> ', strOutput);
+
+console.log('Sum of 100 :>> ');
+
+let sum100 = 0;
+for (let i = 1; i <= 100; i++) {
+    sum100 += i;    
+}
+console.log('Sum of 100 from for:>> ', sum100);
+
+i = 1;
+sum100 = 0;
+while (i <= 100) {
+    sum100 += i;   
+    i++;
+}
+console.log('Sum of 100 from while:>> ', sum100);
+
+i = 1;
+sum100 = 0;
+do {
+    sum100 += i; 
+    i++;
+} while (i <= 100) 
+console.log('Sum of 100 from  do-while:>> ', sum100);
+
+console.log('User solve');
+let tryAnother = true;
+let answer = 0;
+while (tryAnother) {
+    answer = Number (prompt('Please, enter answer for (2+2*2) >>'));
+    if (answer == 6) {
+        alert('You are the winner!!! Congrats!');
+        tryAnother = false;
+    }
+    else {
+        alert('Sorry! Wrong answer! Try again... ');
+    }
+}
+
 
 console.groupEnd();
 
