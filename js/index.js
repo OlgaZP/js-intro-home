@@ -36,24 +36,24 @@ console.groupEnd();
 
 console.group('Prompt tasks');
 console.log('Square number :>> ');
-let num2 = Number (prompt('Please, input your number:'));
+const numS = Number (prompt('Please, input your number:'));
 // num2 = Math.pow (num2, 2);
-num2 = num2 * num2;
-console.log('You are win this number :>> ', num2);
+const numSSquare = numS * numS;
+console.log('You are win this number :>> ', numSSquare);
 
 console.log('Average of two :>> ');
-let num1 = Number (prompt('Please, input 1st number:'));
-num2 = Number (prompt('Please, input 2nd number:'));
-let  ave = (num1 + num2) / 2;
+const num1 = Number (prompt('Please, input 1st number:'));
+const num2 = Number (prompt('Please, input 2nd number:'));
+const  ave = (num1 + num2) / 2;
 console.log('Average :>> ', ave);
 
 console.log('Seconds :>> ');
-let minutes = Number (prompt('Please, input number of minutes:'));
-let sec = minutes * 60;
+const minutes = Number (prompt('Please, input number of minutes:'));
+const sec = minutes * 60;
 console.log(minutes + ' minutes equal ' + sec + '  seconds');
 
 const greeting = 'Hello';
-let userName = String (prompt('Please, enter your name >>'));
+const userName = String (prompt('Please, enter your name >>'));
 console.log('Hello, '+ userName + '!');
 
 console.groupEnd();
@@ -61,7 +61,7 @@ console.groupEnd();
 console.group('if-else tasks');
 console.log('Enter 10 :>> ');
 const userVar = Number (prompt('Please, enter a number >>'));
-if (userVar == 10) {
+if (userVar === 10) {
     console.log('TRUE'); 
 } else {
     console.log('FALSE');
@@ -70,14 +70,14 @@ if (userVar == 10) {
 console.log('test true/false :>> ');
 let test = true;
 console.log('testing true-value :>> ');
-if (test == true) {
+if (test) {
     console.log('Верно');
 } else {
     console.log('Не верно');
 }
 test = false;
 console.log('testing false-value :>> ');
-if (test != true) {
+if (!test) {
     console.log('Верно');
 } else {
     console.log('Не верно');
@@ -86,7 +86,7 @@ if (test != true) {
 console.log('Discount :>> play 3 times...');
 let userSum = 0;
 let userDiscount = 0;
-for (let i=0; i<3; i++) {
+for (let i = 0; i < 3; i++) {
     // let userDiscount = 0;
     userSum = Number (prompt('Please, enter a invoice sum >>'));
     if (userSum > 800) {
@@ -103,13 +103,13 @@ console.groupEnd();
 console.group('Loop Tasks');
 console.log('from 25 to 0 (for) :>> ');
 let strOutput = '';
-for (let i=25; i>=0; i--) {
+for (let i = 25; i >= 0; i--) {
     strOutput = strOutput + i + ' ';    
 }
 console.log('Result for:>> ', strOutput);
 
 console.log('from 25 to 0 (while) :>> ');
-i=25;
+i = 25;
 strOutput = '';
 while (i >= 0) {
     strOutput = strOutput + i + ' ';    
@@ -118,7 +118,7 @@ while (i >= 0) {
 console.log('Result while:>> ', strOutput);
 
 console.log('from 25 to 0 (do-while) :>> ');
-i=25;
+i = 25;
 strOutput = '';
 do {
     strOutput = strOutput + i + ' ';
@@ -134,17 +134,17 @@ for (let i = 10; i <= 50; i = i + 5) {
 }
 console.log('Result from 10 to 50 (div 5) for:>> ', strOutput);
 
-i=10;
+i = 10;
 strOutput = '';
 while (i <= 50) {
-    if (i % 5 == 0) {
+    if (i % 5 === 0) {
         strOutput = strOutput + i + ' ';    
     }
     i++;
 }
 console.log('Result from 10 to 50 (div 5) while:>> ', strOutput);
 
-i=10;
+i = 10;
 strOutput = '';
 do {
     strOutput = strOutput + i + ' ';
@@ -176,12 +176,12 @@ do {
 } while (i <= 100) 
 console.log('Sum of 100 from  do-while:>> ', sum100);
 
-console.log('User solve');
+console.log('User solve while');
 let tryAnother = true;
 let answer = 0;
 while (tryAnother) {
-    answer = Number (prompt('Please, enter answer for (2+2*2) >>'));
-    if (answer == 6) {
+    answer = Number (prompt('Please, enter answer for (2+2*2) while>>'));
+    if (answer === 6) {
         alert('You are the winner!!! Congrats!');
         tryAnother = false;
     }
@@ -190,6 +190,34 @@ while (tryAnother) {
     }
 }
 
+console.log('User solve do-while');
+tryAnother = true;
+answer = 0;
+do {
+    answer = Number (prompt('Please, enter answer for (2+2*2) do-while >>'));
+    if (answer === 6) {
+        alert('You are the winner!!! Congrats!');
+        tryAnother = false;
+    }
+    else {
+        alert('Sorry! Wrong answer! Try again... ');
+    }
+} while (tryAnother);
+
+// realize this loop, but i think it's bad practice
+console.log('User solve for');
+answer = 0;
+for (;;) {
+    answer = Number (prompt('Please, enter answer for (2+2*2) for >>'));
+    if (answer === 6) {
+        alert('You are the winner!!! Congrats!');
+        tryAnother = false;
+        break;
+    } 
+    else {
+        alert('Sorry! Wrong answer! Try again... ');
+    }
+}
 
 console.groupEnd();
 
