@@ -1,27 +1,40 @@
 // if-else task
+console.group('---If-else tasks---');
 //Делится ли число на 5, или на 3, или на 2 без остатка?
-
 let userNum = 0;
+//alert(strOutput.length);
 alert('Play 4 times, please!');
 for (let i = 1; i < 5; i++) {
     userNum = Number (prompt('Input any number, please!'));
+    let strOutput = '';
     if (userNum % 5 === 0) {
-        alert(`Congratulations! Your number ${userNum} divide on 5!`);
+        strOutput = `Congratulations! Your number ${userNum} divide on 5 `;
     }
-    else if (userNum % 3 === 0) {
-        alert(`Congratulations! Your number ${userNum} divide on 3!`);
+    if (userNum % 3 === 0) {
+            if (strOutput.length > 0) {
+                strOutput = strOutput + ', 3';
+            }
+            else {
+                strOutput = `Congratulations! Your number ${userNum} divide on 3 `;
+            }        
     }
-    else if (userNum % 2 === 0) {
-        alert(`Congratulations! Your number ${userNum} divide on 2!`);
+    if (userNum % 2 === 0) {
+        if (strOutput.length > 0) {
+            strOutput = strOutput + ', 2';
+        }
+        else {
+            strOutput = `Congratulations! Your number ${userNum} divide on 2 `;
+        }        
     }
-    else if (userNum) {
-        alert(`Sorry! Your number ${userNum} doesn"t divide on 2, 3, or 5!`);
+    if (userNum && (strOutput.length === 0)) {
+        strOutput = `Sorry! Your number ${userNum} doesn"t divide on 2, 3, or 5`;
     }
-    else {
-        alert('Sorry! Your symbols aren\'t a number', userNum);
+    if (!userNum) {
+        strOutput = 'Sorry! Your symbols aren\'t a number';
     }
+    alert(strOutput);    
 }
-
+console.groupEnd();
 //for tasks
 console.group('---For tasks---');
 //factorial
@@ -59,34 +72,51 @@ else {
 
 //Найти произведение целых чисел в пределах от lim1 до lim2
 console.log('Sum between :>> ');
-let sumBetween = 0;
-const lim1 = Number(prompt('Please, input start natural number.'));
-const lim2 = Number(prompt('Please, input finish natural number.'));
+let sumBetween = 1;
+const lim1 = Number(prompt('Please, input start integer number.'));
+const lim2 = Number(prompt('Please, input finish integer number.'));
 for (let i = lim1; i <= lim2; i++) {
-    sumBetween += i;
+    sumBetween *= i;
 }
 console.log(`Sum of numbers from ${lim1} to ${lim2} is :>>`, sumBetween);
 
 console.groupEnd();
 
-//for tasks
+//functions tasks
 console.group('---Functions tasks---');
-// Создать функцию isAdult, которая будет проверять возраст пользователя на совершеннолетие.
-console.log('Testing isAdult function :>> ');
 
+// Создать функцию isAdult, которая будет проверять возраст пользователя на совершеннолетие.
+console.log('Testing isAdult function as function expression:>> ');
+const isAdult = function (age) {
+    return age > 18 ? true : false ;    
+} 
 console.log('Input value is 20 :>> ', isAdult(20));
 console.log('Input value is 4 :>> ', isAdult(4));
 
-function isAdult(age) {
-    if (age >= 18) {
-        return true;
+// Функция, которая запрашивает число и проверяет простое ли оно (простое число делиться без остатка на себя и на единицу)
+console.log('Testing isPrime function :>> ');
+console.log('Input value is 1 :>> ', isPrime(1));
+console.log('Input value is 50 :>> ', isPrime(50));
+console.log('Input value is 47 :>> ', isPrime(47));
+console.log('Input value is -3 :>> ', isPrime(-3));
+console.log('Input value is \'a\' :>> ', isPrime('a'));
+
+function isPrime(n) {
+    let isDivide = true;    
+    // console.log('n :>> ', n);
+    if ((n > 0) && (typeof(n) === 'number')) {
+        for (let i = 2; i <= (n - 1); i++ ) {
+            if (n % i == 0 ) {
+                isDivide = false;
+                break;            
+            }
+        }
     }
     else {
-        return false;
+         isDivide = false;
     }
+    return isDivide; 
 }
-
-// Функция, которая запрашивает число и проверяет простое ли оно (простое число делиться без остатка на себя и на единицу)
 // Создать функцию checkMultiplicity, которая принимает два числа и проверяет, делится ли первое на второе
 
 console.log('Testing checkMultiplicity function :>> ');
@@ -116,16 +146,16 @@ console.log('Check isTriangle function :>> ');
 
 console.log('Input lengths of sides of the triangle are (3, 4, 5) :>> ', isTriangle(3, 4, 5));
 console.log('Input lengths of sides of the triangle are (3, 4, 10) :>> ', isTriangle(3, 4, 10));
-console.log('Input lengths of sides of the triangle are (3, 3, 8) :>> ', isTriangle(3, 3, 8));
+console.log('Input lengths of sides of the triangle are (1, 1, 2) :>> ', isTriangle(1, 1, 2));
 console.log('Input lengths of sides of the triangle are (3, 4, -5) :>> ', isTriangle(3, 4, -5));
 
 function isTriangle (a, b, c) {
     if ( (a > 0) && (b > 0) && (c > 0)) {
-        if ((a > (b + c)) || (b > (a + c)) || (c > (a + b))) {
-            return true;
+        if ((a >= (b + c)) || (b  >= (a + c)) || (c >= (a + b))) {
+            return false;
         }
         else {
-            return false;
+            return true;
         }
     }
     else {
@@ -134,8 +164,31 @@ function isTriangle (a, b, c) {
 }
 
 // Написать функции расчета площадей (поверхности) следующих фигур/тел: треугольника, прямоугольника (конуса, параллелепипеда)
-console.log('Testing S function :>> ');
-// console.log('Input lengths of sides of the triangle are (3, 4, 5) :>> ', S(3, 4, 5));
+console.log('Testing S function as functional expression:>> ');
+/**
+ * 
+ * @param {number} a length of the fist side of triangle or rectangle
+ * @param {number} b length of the second side of triangle or rectangle
+ * @param {number} c optional parameter, length of the third side of triangle
+ * @returns {number}S of trianle (a,b,c) calculeted based on Geron's formula or S of rectangle (a,b)
+ */
+const S = function (a, b, c = 0) {    
+    if (c === 0) {
+        return a * b;
+    }
+    else {
+        const p = (a + b + c) / 2;
+        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+    }
+}
+console.log('Input lengths of sides of the triangle are (3, 3, 3) :>> ', S(3, 3, 3));
+console.log('Input lengths of sides of the triangle are (3, 4, 5) :>> ', S(3, 4, 5));
+console.log('Input lengths of sides of the rectangle are (3, 4) :>> ', S(3, 4));
+
+console.groupEnd();
+
+console.group('---Objects tasks---');
 
 console.groupEnd();
 
