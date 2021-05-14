@@ -182,13 +182,103 @@ const S = function (a, b, c = 0) {
 
     }
 }
-console.log('Input lengths of sides of the triangle are (3, 3, 3) :>> ', S(3, 3, 3));
+console.log('Input lengths of sides of the triangle are (3, 3, 3) :>> ', Number(S(3, 3, 3)).toFixed(3));
 console.log('Input lengths of sides of the triangle are (3, 4, 5) :>> ', S(3, 4, 5));
 console.log('Input lengths of sides of the rectangle are (3, 4) :>> ', S(3, 4));
 
 console.groupEnd();
 
 console.group('---Objects tasks---');
+// Таски на объекты
+// 1. создать объект Student который содержит следующие свойства: имя, фамилию, дата рождения, контактнык данные, методы: вывод полного имени, изменение контактных данных.
+console.log('Test Student object :>> ');
+
+const Student = {
+    firstName: 'Vasya',
+    lastName: 'Pupkin',
+    isContract: true,
+    dateOfBirth: '2002-05-25',
+    contacts: {
+        fhone: '+380500000000',
+        email: 'mail@gmail.com',
+        instagram: '@vasya_pup',
+    },
+
+    getAge () {
+        const today = new Date();
+        const birthDate = new Date(this.dateOfBirth);        
+        //console.log('object :>> ', today.getFullYear());
+        //console.log('object :>> ', birthDate.getFullYear());
+        // return ((new Date().getTime() - new Date(this.dateOfBirth)) / (24 * 3600 * 365.25 * 1000));    
+        return    today.getFullYear() - birthDate.getFullYear();
+
+    },
+    changeContacts (phone = '', email = '', instagram = '') {       
+         this.contacts.phone = phone;
+         this.contacts.email = email;
+         this.contacts.instagram = instagram;
+    },
+}
+console.log('Student :>> ', Student);
+console.log('getAge function :>> ', Student.getAge());
+console.log('Change contacts function :>> ', Student.changeContacts('+380970000000', 'newmail@gmail.com'));
+console.log('Changed Student :>> ', Student);
+
+// объект машина, метод - смена владельца и номера, расчет топлива на поездку
+const car = {
+    model: 'Toyota',
+    year: 2010,
+    color: 'grey',
+    engine: 1.8,
+    fuelConsumption: 7.7,
+    owner: 'Olga',
+    regID: 'AP 4545 AA',
+    calcFuel (km) {
+        return this.fuelConsumption * km;
+    },
+    changeOwner (newOwner) {
+        this.owner = newOwner;        
+    },
+    changeRegID (newRegID) {
+        this.regID = newRegID;        
+    },
+}
+console.log('Car :>> ', car);
+//console.log('calcFuel function :>> ',car.calcFuel(200));
+console.log('Change owner function :>> ', car.changeOwner('Helen'));
+//console.log('Change regID function :>> ', car.changeRegID('AA 6565 BB'));
+console.log('Changed сar :>> ', car);
+
+// 3 Создать функции-конструкторы:
+// - Книга (автор, название, год издания, издательство)
+function Book (author, title, year, publishName, isPublished) {
+    author = this.author;
+    title = this.title;
+    year = this.year;
+    publishName = this.publishName;
+    isPublished = this.isPublished;
+}
+console.log('Test Book (author, title, year, publishName, isPublished) objects:>> ');
+const harry = new Book ('J.Roaling', 'Harry Potter', 1995, 'Williams', true);
+console.log('harry object Book :>> ', harry);
+const fantasy = new Book ('J.Roaling', 'Harry\'s Dreams', 2022, 'Williams', false);
+console.log('fantasy object Book :>> ', fantasy);
+
+// мобильный телефон (фирма, модель, год выпуска, есть ли био-идентификация, кол-во МПикс, размер памяти, imei)
+function Mobile (brand, name, year, isBioId, mPixels, memorySize, imei) {
+    brand = this.brand;
+    name = this.name;
+    year = this.year;
+    isBioId = this.isBioId;
+    mPixels = this.mPixels;
+    memorySize = this.memorySize;
+    imei = this.imei;
+}
+console.log('Test Mobile (brand, name, year, isBioId, mPixels, memorySize, imei) objects:>> ');
+const xiaomi = new Mobile ('Samsung','A50', 2020, true, 20, 64, '239487298ruiushd8w983u');
+console.log('xiaomi object Book :>> ', xiaomi);
+const samsung = new Mobile ('Xiaomi', 'Redmi 10X', 2021, false, 16, 128, 'kjfdhgloes8743u4hrjkw7432');
+console.log('samsung object Book :>> ', samsung);
 
 console.groupEnd();
 
