@@ -221,6 +221,7 @@ const Student = {
 }
 console.log('Student :>> ', Student);
 console.log('getAge function :>> ', Student.getAge());
+console.log('Old contacts :>> ', Student.contacts);
 console.log('Change contacts function :>> ', Student.changeContacts('+380970000000', 'newmail@gmail.com'));
 console.log('Changed Student :>> ', Student);
 
