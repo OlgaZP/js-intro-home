@@ -22,10 +22,8 @@ console.log('Modified array :>> ', arrExperimental);
 console.log('Length of array :>> ', arrExperimental.length);
 // 3 Вывести элементы с четными индексами.
 console.log('Even-index elements :>> ');
-for(let i = 0; i < arrExperimental.length; i++) {
-    if (i % 2 === 0) {
-        console.log(`arr[${i}] = `, arrExperimental[i]);
-    }
+for(let i = 0; i < arrExperimental.length; i += 2) {    
+        console.log(`arr[${i}] = `, arrExperimental[i]);    
 }
 // 4 Вывести только четные элементы (четные числа делятся на 2 без остатка).
 console.log('Even elements :>> ');
@@ -70,12 +68,16 @@ console.log('Is there any negative element? :>> ', arrExperimental.some(element 
 // }
 
 // 11 Вывести элементы массива, возведенные в куб.
-arrExperimental.forEach(pow3);
-console.log('Raised in third degree array (modified original array) :>> ', arrExperimental);
+arrExperimental.forEach(printPow3);
+// console.log('Raised in third degree array (without modifing original array) :>> ', arrExperimental);
 
 function pow3(item, index, arr) {
     arr[index] = Math.pow(item, 3);
 //  console.log(`arr${index} = ${item} `);
+}
+
+function printPow3 (item, index) {
+    console.log(`arr${index}^3 = ${Math.pow(item,3)} `);
 }
 
 // *12 Прописать для MyArray метод unshift.

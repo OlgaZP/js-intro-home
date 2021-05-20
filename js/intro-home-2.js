@@ -253,11 +253,11 @@ console.log('Changed сar :>> ', car);
 // 3 Создать функции-конструкторы:
 // - Книга (автор, название, год издания, издательство)
 function Book (author, title, year, publishName, isPublished) {
-    author = this.author;
-    title = this.title;
-    year = this.year;
-    publishName = this.publishName;
-    isPublished = this.isPublished;
+    this.author = author;
+    this.title = title;
+    this.year = year;
+    this.publishName = publishName;
+    this.isPublished = isPublished;
 }
 console.log('Test Book (author, title, year, publishName, isPublished) objects:>> ');
 const harry = new Book ('J.Roaling', 'Harry Potter', 1995, 'Williams', true);
@@ -267,13 +267,13 @@ console.log('fantasy object Book :>> ', fantasy);
 
 // мобильный телефон (фирма, модель, год выпуска, есть ли био-идентификация, кол-во МПикс, размер памяти, imei)
 function Mobile (brand, name, year, isBioId, mPixels, memorySize, imei) {
-    brand = this.brand;
-    name = this.name;
-    year = this.year;
-    isBioId = this.isBioId;
-    mPixels = this.mPixels;
-    memorySize = this.memorySize;
-    imei = this.imei;
+     this.brand = brand;
+     this.name = name;
+     this.year = year;
+     this.isBioId = isBioId;
+     this.mPixels = mPixels;
+     this.memorySize = memorySize;
+     this.imei = imei;
 }
 console.log('Test Mobile (brand, name, year, isBioId, mPixels, memorySize, imei) objects:>> ');
 const xiaomi = new Mobile ('Samsung','A50', 2020, true, 20, 64, '239487298ruiushd8w983u');
