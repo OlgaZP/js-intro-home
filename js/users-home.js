@@ -13,8 +13,8 @@ function User (name, surname, age, isMale, email, isSubscribe) {
 // 1.1 Для примера с последней части занятия прописать метод getFullName() (возвращает строку с полным именем) для юзера. Общую логику (т.е. указанный метод) вынести в прототип. 
 const protoUser = new User();
 
-protoUser.getFullName = function () {
-    return this.firstName+' '+this.lastName; 
+protoUser.getFullName = function() {
+    return this.firstName + ' ' + this.lastName; 
 }
 
 User.prototype = protoUser;
@@ -32,16 +32,21 @@ for (let i = 0; i < 100; i++) {
     );
     users.push(user);    
 }
-//console.table(users);
+console.table(users);
 console.log('users[5].getFullName():>> ', users[5].getFullName());
+
 
 //выводим полные имена пользователей
 console.log('Test getFullName :>> ');
-//console.table(users.map(user.getFullName));
+//вариант со стрелочной функцией
+//const usersFullName = users.map(user => user.getFullName());
+//тоже самое, но без стрелочной
+const usersFullName = users.map(function (user) {return user.getFullName();} );
+console.table(usersFullName);
 
 // 1.2 Получить массив полных имен лиц женского пола школьного возраста (6 - 18 лет).
 function isSchoolgirl (user) {
-    return !user.isMale && user.age>= 6 && user.age <= 18;
+    return !user.isMale && user.age >= 6 && user.age <= 18;
 }
 console.log('Show only schoolgirl :>> ');
 const userSchoolgirl = users.filter(isSchoolgirl);
@@ -53,6 +58,6 @@ const findEmail = users.find(item => item.email === 'usermail99@gmail.com');
 console.table(findEmail);
 
 // 1.4 Проверить, все ли пользователи подписаны (subscribed).
-console.log('Is register email usermail99@gmail.com:>> ');
+console.log('Are there all users subscribed?:>> ');
 const isAllSubscribe = users.every(item => item.isSubscribe === true);
 console.table(isAllSubscribe);
