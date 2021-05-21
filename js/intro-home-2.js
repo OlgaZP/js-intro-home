@@ -133,12 +133,7 @@ console.log('Input value is (15, 4) :>> ', checkMultiplicity(15, 4));
  * @returns true - if a divide by b
  */
 function checkMultiplicity(a, b) {
-    if (a % b === 0) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return a % b === 0;
 }
 
 // Проверка возможности треугольника. Создать функцию которая принимает длины треугольника; функция возвращает true если треугольник возможен и false если нет
@@ -153,14 +148,10 @@ function isTriangle (a, b, c) {
     if ( (a > 0) && (b > 0) && (c > 0)) {
         if ((a >= (b + c)) || (b  >= (a + c)) || (c >= (a + b))) {
             return false;
-        }
-        else {
-            return true;
-        }
+        }        
+        return true;        
     }
-    else {
-        return false;
-    }
+    return false;    
 }
 
 // Написать функции расчета площадей (поверхности) следующих фигур/тел: треугольника, прямоугольника (конуса, параллелепипеда)
