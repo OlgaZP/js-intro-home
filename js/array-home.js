@@ -81,4 +81,22 @@ function printPow3 (item, index) {
 }
 
 // *12 Прописать для MyArray метод unshift.
-//Чкть позже в другом файле будет
+const myArray = {
+    0: 1,
+    1: true,
+    2: 3,
+    3: 4,
+    4: 5,
+    length: 5,    
+    
+    myUnshift (firstItem) {
+        for (let i = this.length; i>0; i--) {
+            this[i] = this [i-1];
+        }
+        this[0] = firstItem;
+        return ++this.length;
+    },
+}
+
+myArray.myUnshift(10);
+console.log('Array with added element (call unshift) :>> ', myArray );
