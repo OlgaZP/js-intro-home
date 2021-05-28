@@ -54,9 +54,8 @@ console.table(userSchoolgirl.map(user => user.getFullName()));
 
 // 1.3 Проверить, есть ли среди пользователей пользователь с email`ом usermail99@gmail.com
 console.log('Is register email usermail99@gmail.com:>> ');
-const findEmail = users.find(item => item.email === 'usermail99@gmail.com');
-console.table(findEmail);
-
+const isUsermail99 = users.some(item => item.email === 'usermail99@gmail.com');
+console.log(isUsermail99);
 // 1.4 Проверить, все ли пользователи подписаны (subscribed).
 console.log('Are there all users subscribed?:>> ');
 const isAllSubscribe = users.every(item => item.isSubscribe === true);
