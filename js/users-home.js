@@ -48,9 +48,9 @@ console.table(usersFullName);
 function isSchoolgirl (user) {
     return !user.isMale && user.age >= 6 && user.age <= 18;
 }
-console.log('Show only schoolgirl :>> ');
+console.log('Show full name for schoolgirl :>> ');
 const userSchoolgirl = users.filter(isSchoolgirl);
-console.table(userSchoolgirl);
+console.table(userSchoolgirl.map(user => user.getFullName()));
 
 // 1.3 Проверить, есть ли среди пользователей пользователь с email`ом usermail99@gmail.com
 console.log('Is register email usermail99@gmail.com:>> ');
