@@ -7,12 +7,8 @@ class MyArray {
     constructor(...items) {
         this.length = 0;
         if (items.length > 0) {
-            for (let i=0; i<items.length; i++) {
-                this[i]=items[i];
-            }             
-            this.length = items.length;
-            //this.length = push(items); - не работает, функция не определена
-            }       
+            this.length = this.push(items); 
+        }       
     }
 
     push(...items) {        
