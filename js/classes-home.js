@@ -1,23 +1,36 @@
 'use strict';
 // 1) Переписать функцию-конструктор MyArray на классы. *Переписать методы unshift, push для 
 //неограниченного числа аргументов.
+//реализовано без проверок типа аргументов
 
 class MyArray {
     constructor(...items) {
         this.length = 0;
         if (items.length > 0) {
-             this.arr = items;
-             this.length = items.length;
-            }        
-       // this.length = 0; //вызов сеттера?
+            for (let i=0; i<items.length; i++) {
+                this[i]=items[i];
+            }             
+            this.length = items.length;
+            //this.length = push(items); - не работает, функция не определена
+            }       
     }
 
-    push(...items) {
-        
-        for (let i = 0; i < arguments.length; i++) {
+    push(...items) {        
+        for (let i = 0; i < items.length; i++) {
             this[this.length + i] = items[i];
         }
-        return this.length + arguments.length;
+        this.length += items.length;
+        return this.length; 
+    }
+
+    unshift (...items) {
+        const shiftedPos = items.length;
+        for (let i = this.length + shiftedPos - 1; i>0; i--) {
+            this[i] = (i>= shiftedPos) ? this [i - shiftedPos] : items[i];                       
+        }   
+        this[0] = items[0];    
+        this.length += items.length; 
+        return this.length;
     }
     
     set length(n) {
@@ -30,10 +43,21 @@ class MyArray {
 }
 
 //testing
+console.group('Testing MyArray');
 const testNullArr = new MyArray();
-const testArr = new MyArray (1, 2, 3, 4, 5);
+const testArr = new MyArray (11, 12, 13, 14, 15);
 console.log('testNullArr :>> ', testNullArr);
 console.log('testArr :>> ', testArr);
+console.log('testNullArr.push(100) :>> ', testNullArr.push(100));
+console.log('now testNullArr is:>> ', testNullArr);
+console.log('testNullArr.push(3, 4, 5, 6, 7) :>> ', testNullArr.push(3, 4, 5, 6, 7));
+console.log('after that testNullArr is:>> ', testNullArr);
+console.log('testNullArr.unshift(-4) :>> ', testNullArr.unshift(-4));
+console.log('then testNullArr is:>> ', testNullArr);
+console.log('testNullArr.unshift(-1, -2, -3) :>> ', testNullArr.unshift(-1, -2, -3));
+console.log('finally testNullArr is:>> ', testNullArr);
+console.groupEnd();
+
 
 // 2) Реализовать класс RangeValidator, со следующими свойствами:
 // ■ from (number);
@@ -95,6 +119,7 @@ class RangeValidator {
 }
 
 //testing
+console.group('Testing RangeValidator')
 try {
     const testCorrectRange = new RangeValidator(3, 5);    
     console.log('testCorrectRange :>> ', testCorrectRange.showRange());
@@ -112,3 +137,4 @@ try {
 } catch (err) {
     console.log(`Attention! Execution error:>> ${err.name} - ${err.message}`);
 }
+console.groupEnd();
