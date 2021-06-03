@@ -6,8 +6,8 @@
 class MyArray {
     constructor(...items) {
         this.length = 0;
-        if (items.length > 0) {
-            this.length = this.push(items); 
+        if (items.length > 0) {            
+            this.length = this.push(...items); 
         }       
     }
 
@@ -70,8 +70,11 @@ class RangeValidator {
     }
 
     set from(a) {
-        if (typeof a !== 'number') {
+        if (typeof a !== 'number' || Number.isNaN(a)) {
             throw new TypeError('The begin of range must be a number!')
+        }
+        if (a > this.to) {
+            throw new RangeError('The begin of range must be less than the end!');
         }
         this._from = a;
     }
@@ -81,7 +84,7 @@ class RangeValidator {
     }
 
     set to(b) {
-        if (typeof b !== 'number') {
+        if (typeof b !== 'number' || Number.isNaN(b)) {
             throw new TypeError('The end of range must be a number!')
         }
         if (b < this.from) {
@@ -103,7 +106,7 @@ class RangeValidator {
     }
 
     validate(x) {
-        if (typeof x !== 'number') {
+        if (typeof x !== 'number' || Number.isNaN(x)) {
             throw new TypeError('Range validator work only for number!')
         }
         return x>=this.from && x<= this.to;
@@ -122,9 +125,9 @@ try {
     console.log('testCorrectRange.range :>> ', testCorrectRange.range);
     console.log('testCorrectRange.validate(4) :>> ', testCorrectRange.validate(4));
     console.log('testCorrectRange.validate(5.0001) :>> ', testCorrectRange.validate(5.0001));
-    console.log('testCorrectRange.validate(-1.5) :>> ', testCorrectRange.validate(-1.5));
-    console.log('testCorrectRange.validate(NaN) :>> ', testCorrectRange.validate(NaN));
+    console.log('testCorrectRange.validate(-1.5) :>> ', testCorrectRange.validate(-1.5));    
     console.log('testCorrectRange.validate(Infinity) :>> ', testCorrectRange.validate(Infinity));
+    console.log('testCorrectRange.validate(NaN) :>> ', testCorrectRange.validate(NaN));
     //console.log('testCorrectRange.validate(\'a\') :>> ', testCorrectRange.validate('a'));
     // const testIncorrectRange = new RangeValidator (5, -3);
     // console.log('testIncorrectRange :>> ', testIncorrectRange.showRange());
