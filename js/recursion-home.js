@@ -71,11 +71,9 @@ console.groupEnd()
 function flattingArray (arr) {
   let result = []
   arr.forEach(a => {
-    if (Array.isArray(a)) {
-      result = result.concat(flattingArray(a))
-    } else {
-      result.push(a)
-    }
+    Array.isArray(a)
+      ? (result = result.concat(flattingArray(a)))
+      : result.push(a)
   })
   return result
 }
